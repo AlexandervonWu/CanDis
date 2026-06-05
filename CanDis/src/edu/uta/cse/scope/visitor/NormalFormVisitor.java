@@ -5,6 +5,7 @@ import parser.ast.nodes.SigDecl;
 import parser.ast.nodes.Predicate;
 import parser.ast.nodes.Check;
 import parser.ast.nodes.Run;
+import edu.uta.cse.scope.macros.NormalForm;
 import parser.ast.nodes.Assertion;
 import parser.ast.nodes.Fact;
 import parser.ast.nodes.Function;
@@ -41,6 +42,12 @@ import parser.ast.visitor.GenericVisitor;
 import parser.ast.visitor.PrettyStringVisitor;
 import parser.etc.Pair;
 
-public class NormalFormVisitor  {
+/**
+ * This visitor generates the normal form of formulas and functions in the Alloy model. 
+ * The normal form consists of a quantification tree and a matrix e-graph representation of the formula or function. 
+ * The quantification tree captures the structure of the quantifiers in the formula or function, while the matrix e-graph captures the structure of the formula or function itself.
+ * The normal form can be used for distance calculation, as well as for other analyses and transformations on the formula or function.
+ */
+public class NormalFormVisitor implements GenericVisitor<String, NormalForm> {
     
 }

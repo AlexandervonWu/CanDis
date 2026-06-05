@@ -1,7 +1,9 @@
 package edu.uta.cse.scope.macros;
 
-// This class encodes quantified variables
-// invariants: variables are up to De Bruijn indices, but still have names; most importantly, encoding types. 
+/**
+ * This class encodes quantified variables.
+ * invariants: variables are up to De Bruijn indices, but still have names; most importantly, encoding types.
+ */
 public class QuantiVar {
     private int id;
     private String name;
