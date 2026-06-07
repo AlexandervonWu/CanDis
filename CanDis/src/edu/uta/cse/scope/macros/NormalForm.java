@@ -12,7 +12,7 @@ import java.util.Map;
 public class NormalForm {
     private QuantificationTreeNode quantificationTreeRoot;
     // matrix e-graph representation of the formula, where each node is a subformula, and edges represent the structure of the formula.
-    // TODO: define an e-graph for the matrix with the Normal Form Visitor. 
+    private EGraphNode matrixEGraphRoot;
     private List<QuantiVar> matrixQuantiVars; // the quantified variables in the matrix, in the order they appear in the formula.
     private Map<QuantiVar, QuantificationTreeNode> correspondingQuantificationTreeNodes; // a mapping from quantified variables in the matrix to their corresponding quantification tree nodes, for easy access.
 }
