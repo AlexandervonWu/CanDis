@@ -9,13 +9,18 @@ import java.util.HashSet;
  * It would be editted by the visitor in those global declarations, and then used by the visitor in the local declarations and formulas.
  */
 public class ModelEnv {
+    private String moduleName; // the name of the model, which can be used for error reporting and debugging.
     private Set<String> sigs; // the set of signatures in the model
     private Set<String> fields; // the set of fields in the model
     private Set<String> globalBindings; // the set of global bindings in the model, including predicates, functions, facts, assertions, etc.
+    private Set<String> opens; // the set of opened modules in the model, which can be used to resolve the references in the formulas and functions, and to check the types of the quantified variables.
+    private Set<String> commands; // the set of commands in the model, which can be used to check the properties of the model, and to generate the normal forms for the formulas in the commands.
     public ModelEnv() {
         this.sigs = new HashSet<>();
         this.fields = new HashSet<>();
         this.globalBindings = new HashSet<>();
+        this.opens = new HashSet<>();
+        this.commands = new HashSet<>();
     }
     public void addSig(String sig) {
         this.sigs.add(sig);
@@ -43,5 +48,23 @@ public class ModelEnv {
     }
     public Set<String> getGlobalBindings() {
         return this.globalBindings;
+    }
+    public void addOpen(String open) {
+        this.opens.add(open);
+    }
+    public boolean containsOpen(String open) {
+        return this.opens.contains(open);
+    }
+    public Set<String> getOpens() {
+        return this.opens;
+    }
+    public void addCommand(String command) {
+        this.commands.add(command);
+    }
+    public boolean containsCommand(String command) {
+        return this.commands.contains(command);
+    }
+    public Set<String> getCommands() {
+        return this.commands;
     }
 }
