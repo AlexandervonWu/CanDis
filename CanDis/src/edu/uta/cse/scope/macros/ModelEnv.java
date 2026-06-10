@@ -22,6 +22,12 @@ public class ModelEnv {
         this.opens = new HashSet<>();
         this.commands = new HashSet<>();
     }
+    public void setModuleName(String moduleName) {
+        this.moduleName = moduleName;
+    }
+    public String getModuleName() {
+        return this.moduleName;
+    }
     public void addSig(String sig) {
         this.sigs.add(sig);
     }

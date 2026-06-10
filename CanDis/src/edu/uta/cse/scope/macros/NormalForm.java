@@ -13,6 +13,8 @@ public class NormalForm {
     private QuantificationTreeNode quantificationTreeRoot;
     // matrix e-graph representation of the formula, where each node is a subformula, and edges represent the structure of the formula.
     private EGraphNode matrixEGraphRoot;
+    private List<QuantiVar> params; // the parameters of the formula or function, in the order they appear in the original formula or function declaration.
     private List<QuantiVar> matrixQuantiVars; // the quantified variables in the matrix, in the order they appear in the formula.
     private Map<QuantiVar, QuantificationTreeNode> correspondingQuantificationTreeNodes; // a mapping from quantified variables in the matrix to their corresponding quantification tree nodes, for easy access.
+
 }
