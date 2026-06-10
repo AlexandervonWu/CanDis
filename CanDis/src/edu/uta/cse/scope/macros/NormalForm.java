@@ -17,4 +17,55 @@ public class NormalForm {
     private List<QuantiVar> matrixQuantiVars; // the quantified variables in the matrix, in the order they appear in the formula.
     private Map<QuantiVar, QuantificationTreeNode> correspondingQuantificationTreeNodes; // a mapping from quantified variables in the matrix to their corresponding quantification tree nodes, for easy access.
 
+    public NormalForm() {
+        // initialize the normal form with empty quantification tree and matrix e-graph, and empty parameter list and quantified variable list.
+        this.quantificationTreeRoot = null;
+        this.matrixEGraphRoot = null;
+        this.params = null;
+        this.matrixQuantiVars = null;
+        this.correspondingQuantificationTreeNodes = null;
+    
+    }
+
+    public QuantificationTreeNode getQuantificationTree() {
+        return this.quantificationTreeRoot;
+    }
+    public EGraphNode getMatrixEGraph() {
+        return this.matrixEGraphRoot;
+    }
+    public List<QuantiVar> getParams() {
+        return this.params;
+    }
+    public List<QuantiVar> getMatrixQuantiVars() {
+        return this.matrixQuantiVars;
+    }
+    public Map<QuantiVar, QuantificationTreeNode> getCorrespondingQuantificationTreeNodes() {
+        return this.correspondingQuantificationTreeNodes;
+    }
+    public void addNode(QuantificationTreeNode node) {
+        if (this.quantificationTreeRoot == null) {
+            this.quantificationTreeRoot = node;
+        } else {
+            // TODO : add the node to the quantification tree, according to the structure of the original formula.
+            // this can be done by maintaining a stack of the current path in the quantification tree, and adding the node as a child of the current node on the stack.
+            // for simplicity, we assume that the visitor that generates the normal form will handle this part, and we just provide a method to add a node to the quantification tree.
+        }
+    }
+    public void addEClass(EGraphNode node) {
+        if (this.matrixEGraphRoot == null) {
+            this.matrixEGraphRoot = node;
+        } else {
+            // TODO : add the node to the matrix e-graph, according to the structure of the original formula.
+            // this can be done by maintaining a stack of the current path in the matrix e-graph, and adding the node as a child of the current node on the stack.
+            // for simplicity, we assume that the visitor that generates the normal form will handle this part, and we just provide a method to add a node to the matrix e-graph.
+        }
+    }
+    public void addParam(QuantiVar param) {
+        this.params.add(param);
+    }
+    public void addMatrixQuantiVar(QuantificationTreeNode qtNode, QuantiVar quantiVar) {
+        this.matrixQuantiVars.add(quantiVar);
+        this.correspondingQuantificationTreeNodes.put(quantiVar, qtNode);
+        qtNode.addQuantiVar(quantiVar);
+    }
 }

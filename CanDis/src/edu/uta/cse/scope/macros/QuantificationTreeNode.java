@@ -54,6 +54,9 @@ public class QuantificationTreeNode {
     public void addChild(QuantificationTreeNode child) {
         children.add(child);
     }
+    public void addQuantiVar(QuantiVar quantiVar) {
+        quantiVars.add(quantiVar);
+    }
     public void setParent(QuantificationTreeNode parent) {
         this.parent = parent;
     }
