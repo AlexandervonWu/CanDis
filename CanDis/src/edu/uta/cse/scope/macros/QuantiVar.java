@@ -3,7 +3,7 @@ package edu.uta.cse.scope.macros;
 import edu.mit.csail.sdg.ast.Type;
 
 /**
- * This class encodes quantified variables.
+ * This class encodes quantified variables. They are defined as "slots" in the quantification system
  * invariants: variables are up to De Bruijn indices, but still have names; most importantly, encoding types.
  */
 public class QuantiVar {
