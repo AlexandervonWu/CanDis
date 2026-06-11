@@ -1,5 +1,7 @@
 package edu.uta.cse.scope.macros;
 
+import edu.mit.csail.sdg.ast.Type;
+
 /**
  * This class encodes quantified variables.
  * invariants: variables are up to De Bruijn indices, but still have names; most importantly, encoding types.
@@ -7,8 +9,8 @@ package edu.uta.cse.scope.macros;
 public class QuantiVar {
     private int id;
     private String name;
-    private String type;
-    public QuantiVar(int id, String name, String type) {
+    private Type type;
+    public QuantiVar(int id, String name, Type type) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -19,7 +21,7 @@ public class QuantiVar {
     public String getName() {
         return name;
     }
-    public String getType() {
+    public Type getType() {
         return type;
     }
     public boolean equals(Object o) {
