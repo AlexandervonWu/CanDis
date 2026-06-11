@@ -6,6 +6,7 @@ import parser.ast.nodes.Predicate;
 import parser.ast.nodes.Check;
 import parser.ast.nodes.Run;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -103,7 +104,6 @@ public class NormalFormVisitor implements GenericVisitor<String, NormalForm> {
     }
     @Override
     public String visit(ParamDecl param, NormalForm arg) {
-        // TODO Auto-generated method stub
         if (arg == null) {
             throw new IllegalArgumentException("[Visitor] ParamDecl needs a valid predicate or function NormalForm as argument, but got null.");
         }
@@ -117,13 +117,22 @@ public class NormalFormVisitor implements GenericVisitor<String, NormalForm> {
                 throw new IllegalArgumentException("[Visitor] ParamDecl variables should be VarExpr, but got: " + var.getClass().getSimpleName());
             }
         }
-        throw new UnsupportedOperationException("Unimplemented method 'visit'");
+        return "[VISITOR] Param(s) added into environment: " + param.getVariables().stream().map(v -> ((VarExpr) v).getName()).collect(java.util.stream.Collectors.joining(", "));
     }
     @Override
     public String visit(VarDecl vard, NormalForm arg) {
         // TODO This is a RelDecl granting a new QTN
         
-        throw new UnsupportedOperationException("Unimplemented method 'visit'");
+        if (!(vard.getParent() instanceof QtExpr || vard.getParent() instanceof QtFormula)) {
+            throw new UnsupportedOperationException("Unimplemented method 'visit'");
+        }
+        if (vard.getParent() instanceof QtExpr) {
+            QtExpr parentQtExpr = (QtExpr) vard.getParent();
+            List<QuantiVar> vars = new ArrayList<>();
+            // QuantificationTreeNode qtNode = 
+            // new QuantificationTreeNode(parentQtExpr.getOp(), , parentQtExpr.isDisj(), vard.getType());
+        }
+        return "TODO";
     }
     @Override
     public String visit(ExprOrFormula arg0, NormalForm arg1) {
