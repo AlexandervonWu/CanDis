@@ -2,6 +2,8 @@ package edu.uta.cse.scope.macros;
 
 import java.util.List;
 
+import edu.uta.cse.scope.macros.EGraphNode.Metatype;
+
 /**
  * This class represents a node in the slotted e-graph of the matrix of the normal form.
  * The e-graph is a graph representation of the formula, where each node represents a subformula, and edges represent the structure of the formula.
@@ -17,12 +19,13 @@ public class EGraphNode {
     private boolean isCommutative; // whether the operator of this node is commutative, which can help to capture the symmetry of the formula
     private int maxArity; // the maximum arity of this node, which is the maximum number of children this node can have, and it is determined by the operator of this node
     private boolean flexibleArity; // whether this node has flexible arity, which is determined by the operator of this node, e.g., "and" and "or" have flexible arity, while "implies" and "iff" have fixed arity of 2.
-    enum Metatype {
+    public enum Metatype {
         ATOMIC, 
         SET, 
-        BOOLEAN
+        BOOLEAN,
+        CONTROL
     }
-    enum Opcode {
+    public enum Opcode {
         AND,
         OR,
         NOT,
@@ -35,8 +38,13 @@ public class EGraphNode {
         PREDICATE,
         FUNCTION,
         VARIABLE,
-        CONSTANT
+        CONSTANT,
         // ... other operators can be added here
+        MODULEDECL,
+        OPEN,
+        PARAMDECL,
+        SIGDECL,
+        FIELDDECL
     }
     private Metatype metatype; // the metatype of this node, which can be used to capture the type of the formula, e.g., atomic formula, set formula, boolean formula, etc.
     public EGraphNode(int id, Opcode opcode, List<EGraphNode> children, boolean isCommutative, int maxArity, boolean flexibleArity, Metatype metatype) {
